@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CART</title>
+    <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- css murni -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sarapan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Products</a>
+                    <a class="nav-link active" href="#">Cart</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <h2 class="my-3">YOUR CART</h2>
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"><b>Image</b></th>
+                            <th scope="col"><b>Breakfast Name</b></th>
+                            <th scope="col"><b>Qty</b></th>
+                            <th scope="col"><b>Price</b></th>
+                            <th scope="col"><b>Total Price</b></th>
+                            <th scope="col"><b>Action</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><img id="gambar" width="100" src="" alt=""></th>
+                            <td id="breakfast_name">Mark</td>
+                            <td id="qty">Otto</td>
+                            <td id="price">@mdo</td>
+                            <td id="total_price">@mdo</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter voucher code"
+                        aria-label="Enter voucher code" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-primary" type="button" id="button-addon2">></button>
+                </div>
+
+                <h5 id="judul_total_produk">Total Products: </h5>
+                <h5 id="judul_total_price">Total Price: </h5>
+                <h5 id="judul_diskon">Discount: </h5>
+                <h5 id="judul_total_payment">Total Payment: </h5>
+
+                <button class="btn btn-sm btn-success">Proceed to Payment</button>
+                <button class="btn btn-sm btn-danger">Delete Cart</button>
+            </div>
+        </div>
+    </div>
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- javascript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let breakfast_name = localStorage.getItem('breakfast_name');
+            let qty = localStorage.getItem('qty');
+            document.getElementById('breakfast_name').innerText = breakfast_name;
+            document.getElementById('qty').innerText = qty;
+
+            // jika breakfast_name sama dengan 'Fried Rice' maka
+            if (breakfast_name === 'Fried Rice') {
+                // setel gambar nya
+                let image = 'image/fried-rice.jpg';
+                // setel price nya 
+                let price = 10000;
+                // value qty nya adalah masih string jadi kita konversi ke angka
+                qty = parseInt(qty);
+                // lalu qty nya dikali dengan price
+                let total_price = qty * price;
+                // panggil gambar nya lalu pada attribute src diisi dengan image
+                document.getElementById('gambar').setAttribute('src', image);
+                document.getElementById('qty').innerText = qty;
+                document.getElementById('price').innerText = price;
+                document.getElementById('total_price').innerText = total_price;
+
+                // panggil #judul_total_produk lalu isi dengan breakfast_name
+                document.getElementById('judul_total_produk').innerText = 'Total Products: ' + breakfast_name;
+                // panggil #judul_total_price lalu isi dengan total_price
+                document.getElementById('judul_total_price').innerText = 'Total Price: ' + total_price;
+                // panggil #judul_diskon lalu isi dengan 0
+                document.getElementById('judul_diskon').innerText = 'Discount: ' + 0;
+                // panggil #judul_total_payment lalu isi dengan total_price
+                document.getElementById('judul_total_payment').innerText = 'Total Payment: ' + total_price;
+                // panggil #judul_price 
+            } else if (breakfast_name === 'Yellow Rice') {
+                // setel gambar nya
+                let image = 'image/nasi-kuning.jpg';
+                // setel price nya 
+                let price = 7000;
+                // value qty nya adalah masih string jadi kita konversi ke angka
+                qty = parseInt(qty);
+                // lalu qty nya dikali dengan price
+                let total_price = qty * price;
+                // panggil gambar nya lalu pada attribute src diisi dengan image
+                document.getElementById('gambar').setAttribute('src', image);
+                document.getElementById('qty').innerText = qty;
+                document.getElementById('price').innerText = price;
+                document.getElementById('total_price').innerText = total_price;
+
+                // panggil #judul_total_produk lalu isi dengan breakfast_name
+                document.getElementById('judul_total_produk').innerText = 'Total Products: ' + breakfast_name;
+                // panggil #judul_total_price lalu isi dengan total_price
+                document.getElementById('judul_total_price').innerText = 'Total Price: ' + total_price;
+                // panggil #judul_diskon lalu isi dengan 0
+                document.getElementById('judul_diskon').innerText = 'Discount: ' + 0;
+                // panggil #judul_total_payment lalu isi dengan total_price
+                document.getElementById('judul_total_payment').innerText = 'Total Payment: ' + total_price;
+                // panggil #judul_price 
+            };
+        });
+    </script>
+</body>
+</html>

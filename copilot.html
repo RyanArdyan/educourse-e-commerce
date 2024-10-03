@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Cart</h1>
+    <p id="nama_pesanan">Nama Pesanan: </p>
+    <p id="jumlah_pesanan">Jumlah Pesanan: </p>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var namaPesanan = localStorage.getItem('nama_pesanan');
+        var jumlahPesanan = localStorage.getItem('jumlah_pesanan');
+        if (namaPesanan && jumlahPesanan) {
+            document.getElementById('nama_pesanan').innerText = 'Nama Pesanan: ' + namaPesanan;
+            document.getElementById('jumlah_pesanan').innerText = 'Jumlah Pesanan: ' + jumlahPesanan;
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Our Breakfast</title>
+    <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- css murni -->
+     <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Our Breakfast</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Products</a>
+                    <a class="nav-link" href="#">Cart</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+    <div class="container">
+        <div class="row">
+            <h3 class="my-2">Welcome to our breakfast</h3>
+            <div class="col-md-3 m-2">
+                <div class="card" style="width: 18rem;">
+                    <img src="image/fried-rice.jpg" class="card-img-top" alt="Fried Rice">
+                    <div class="card-body">
+                        <h5 class="card-title breakfast_name">Fried Rice</h5>
+                        <p class="card-text">Rp 10.000</p>
+                        <div class="d-flex align-items-center my-1">
+                            <button class="subtraction_button btn btn-secondary" onclick="reduction('number_of_items_1')"> - </button>
+                            <p id="number_of_items_1" class="mx-2 my-0 quantity"> 0 </p>
+                            <button class="addition_button btn btn-secondary" onclick="addition('number_of_items_1')"> + </button>
+                        </div>        
+                        <a href="cart.html" class="btn btn-primary" onclick="save_order('Fried Rice', 'number_of_items_1')">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 m-2">
+                <div class="card" style="width: 18rem;">
+                    <img src="image/nasi-kuning.jpg" class="card-img-top" alt="Yellow Rice">
+                    <div class="card-body">
+                        <h5 class="card-title nama_pesanan">Yellow Rice</h5>
+                        <p class="card-text">Rp 7.000</p>
+                        <div class="d-flex align-items-center my-1">
+                            <button class="subtraction_button btn btn-secondary" onclick="reduction('number_of_items_2')"> - </button>
+                            <p id="number_of_items_2" class="mx-2 my-0 quantity"> 0 </p>
+                            <button class="addition_button btn btn-secondary" onclick="addition('number_of_items_2')"> + </button>
+                        </div>
+                        
+                        <a href="cart.html" class="btn btn-primary"  onclick="save_order('Yellow Rice', 'number_of_items_2')">Order</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- javascript -->
+    <script>
+        // parameter id berisi string id
+        function reduction(id) {
+            // ambil id
+            let element = document.getElementById(id);
+            // ubah string menjadi text
+            let value = parseInt(element.innerText);
+            // jika value nya lebih dari 0 maka
+            if (value > 0) {
+                value--;
+            }
+            // panggil element lalu text dalamnya diisi dengan value
+            element.innerText = value;
+        }
+
+        // parameter id berisi string id
+        function addition(id) {
+            // ambil id
+            let element = document.getElementById(id);
+            // ubah string menjadi text
+            let value = parseInt(element.innerText);
+            // addition nilainya
+            value++;
+            // panggil element lalu text dalamnya diisi dengan value
+            element.innerText = value;
+        }
+
+        // setelah aku click tombol order
+       function save_order(breakfast_name, quantity_id)
+       {
+           // Fungsi trim() dalam JavaScript digunakan untuk menghapus spasi putih dari kedua sisi string. Ini termasuk spasi, tab, dan karakter newline yang mungkin ada di awal atau akhir string. Misalnya, jika Anda memiliki string "  Hello World!  ", menggunakan trim() akan mengubahnya menjadi "Hello World!"12.
+           let qty = document.getElementById(quantity_id).innerText.trim();
+           // simpan kedalam local storage
+           localStorage.setItem('breakfast_name', breakfast_name);
+           localStorage.setItem('qty', qty);
+
+       }
+    </script>
+</body>
+</html>
